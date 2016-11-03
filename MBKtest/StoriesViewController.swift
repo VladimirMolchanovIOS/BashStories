@@ -22,6 +22,7 @@ class StoriesViewController: UIViewController {
     // MARK: Views
     private var storiesTableView: UITableView!
     private var topRefreshControl: UIRefreshControl!
+    private var activityIndicator: UIActivityIndicatorView!
     
     // MARK: Public properties
     var viewModel: StoriesViewModel!
@@ -64,7 +65,16 @@ class StoriesViewController: UIViewController {
         
         viewModel.loadedStories.asObservable()
             .map { _ in false }
-            .bindTo(topRefreshControl.rx.refreshing).addDisposableTo(disposeBag)
+            .bindTo(topRefreshControl.rx.refreshing)
+            .addDisposableTo(disposeBag)
+        
+        viewModel.loadedStories.asObservable()
+            .skip(1)
+            .map { _ in () }
+            .subscribe(onNext: { [unowned self] in
+                self.activityIndicator.stopAnimating()
+            })
+            .addDisposableTo(disposeBag)
     }
     
     private func prepareViews() {
@@ -86,11 +96,21 @@ class StoriesViewController: UIViewController {
         }
         
         view.addSubview(storiesTableView)
+        
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray).then {
+            $0.startAnimating()
+            $0.hidesWhenStopped = true
+        }
+        view.addSubview(activityIndicator)
     }
 
     private func layoutViews() {
         storiesTableView <- [
             Edges()
+        ]
+        
+        activityIndicator <- [
+            CenterX(), CenterY()
         ]
         
         view.layoutIfNeeded()

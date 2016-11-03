@@ -99,7 +99,7 @@ class StoryCell: UITableViewCell {
     }
     
     func layoutViews() {
-        titleLabel.sizeToFit()
+        // константы будут перенесены в Constants, сейчас просто не трачу на это время
         titleLabel <- [
             Top(10), Left(10), Right(5).to(dateLabel, .left), Height(>=16)
         ]
