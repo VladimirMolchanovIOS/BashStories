@@ -16,6 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let rootController = UINavigationController()
+        
+        let storiesController = StoriesViewController(viewModel: StoriesViewModel())
+
+        rootController.pushViewController(storiesController, animated: false)
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window!.rootViewController = rootController
+        window!.makeKeyAndVisible()
+        
         return true
     }
 

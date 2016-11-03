@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (4.0.1)
+  - EasyPeasy (1.4)
+  - RxCocoa (3.0.0):
+    - RxSwift (~> 3.0)
+  - RxSwift (3.0.0)
+  - SwiftyJSON (3.1.1)
+  - Then (2.1.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0)
+  - EasyPeasy
+  - RxCocoa (~> 3.0)
+  - RxSwift (~> 3.0)
+  - SwiftyJSON
+  - Then
+
+SPEC CHECKSUMS:
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  EasyPeasy: c2e49ceb822edc0a5fffefd66240fff10129047d
+  RxCocoa: 0a2f3ae381cf16f4021a4cee7a4420f83058a965
+  RxSwift: a930cd662f5b4a7ca9dc3518585dba91dadf497c
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+  Then: 8496793c8fcac95482b943909b440724c7d8d82c
+
+PODFILE CHECKSUM: 896489698dd2e8a28bfcc28e6b4a1ca184909ca1
+
+COCOAPODS: 1.1.1
